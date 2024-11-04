@@ -1,7 +1,7 @@
-package com.yearup;
+package com.yearup.contracts;
 
 // Class representing a generic contract
-public class Contract {
+public abstract class Contract {
     //  for all contracts
     private String date;            // Date of the contract
     private String customerName;     // Name of the customer
