@@ -21,6 +21,9 @@ public class Contract {
         this.monthlyPayment = monthlyPayment;
     }
 
+    public Contract(String vin, String customerName, String contractType, String contractDate) {
+    }
+
     // Getters
     public String getDate() {
         return date;
@@ -45,4 +48,5 @@ public class Contract {
     public double getMonthlyPayment() {
         return monthlyPayment;
     }
+
 }

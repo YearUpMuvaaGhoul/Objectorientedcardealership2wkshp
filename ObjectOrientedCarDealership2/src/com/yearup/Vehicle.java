@@ -65,3 +65,4 @@ public class Vehicle {
         return price; // Return the price of the vehicle
     }
 }
+
