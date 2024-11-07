@@ -1,14 +1,22 @@
 package com.yearup;
 
 
+import com.yearup.contracts.Contract;
+
+import java.util.ArrayList;
 import java.util.List; // Import List for managing collections
 import java.util.Scanner; // Import Scanner for user input
+
+//public Dealership currentDealership;
+//public ArrayList<Contract> contracts;
 
 // Class to handle the user interface for the dealership
 public class UserInterface {
     private Dealership dealership; // This holds the dealership's information
     private Scanner scanner; // Scanner to read user input
     private DealerShipFileManager fileManager; // Handles reading and writing to a file
+    public static String filename_dealership = "inventory.csv";
+    public static String filename_contracts = "contracts.csv";
 
     // Constructor to set up the UserInterface with a Dealership
     public UserInterface(Dealership dealership) {

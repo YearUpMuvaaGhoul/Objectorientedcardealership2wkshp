@@ -1,39 +1,33 @@
 package com.yearup.contracts;
 
-public class LeaseContract extends Contract{
-    private double expectedEndingValue; // 50% of original value
-    private double leaseFee; // 7% of the original price
+public class LeaseContract extends Contract {
+    private double leasePrice;       // Total lease price of the vehicle
+    private int leaseTerm;           // Lease term in months
+    private double expectedEndingValue; // Expected ending value after lease
+
+    // Constructor to initialize the LeaseContract
+    public LeaseContract(String date, String customerName, String customerEmail, double leasePrice, int leaseTerm) {
+        super(date, customerName, customerEmail);
+        this.leasePrice = leasePrice; // Set the lease price
+        this.leaseTerm = leaseTerm;    // Set the lease term
+        this.expectedEndingValue = leasePrice * 0.50; // Expected ending value is 50% of original price
+        setVehicleSold("Vehicle leased under lease contract");
+    }
 
     public LeaseContract(String date, String customerName, String customerEmail, String vehicleSold) {
         super(date, customerName, customerEmail, vehicleSold);
-//        this.expectedEndingValue = getExpectedEndingValue();
-//        this.leaseFee = getLeaseFee();
     }
 
-//    public double getExpectedEndingValue() {
-//        double cost;
-//        cost = super.getVehicleSold().price;
-//        expectedEndingValue = .5 * cost;
-//        return expectedEndingValue;
-//    }
-//
-//    public double getLeaseFee() {
-//        double cost = super.getVehicleSold().price;
-//        this.leaseFee = .07 * cost;
-//        return leaseFee;
-//    }
-//
-//    @Override
-//    public double getTotalPrice(){
-//        double cost = super.getVehicleSold();
-//        return cost + leaseFee;
-//    }
+    @Override
+    public double getTotalPrice() {
+        double leaseFee = leasePrice * 0.07; // 7% lease fee
+        return (leasePrice + leaseFee) * leaseTerm; // Total price includes lease payments over the term
+    }
 
     @Override
-    public double getMonthlyPayment(){
-        double cost = getTotalPrice();
-        double termMonths = 36;
-        double interestRate = 0.0425;
-        return (cost * interestRate) / termMonths;
+    public double getMonthlyPayment() {
+        // Calculate the monthly payment based on the total lease cost
+        double totalLeaseCost = getTotalPrice(); // Total cost including fees
+        return totalLeaseCost / leaseTerm; // Monthly payment is the total lease cost divided by lease term
     }
 }
